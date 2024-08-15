@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="bg-green-500/50 backdrop-blur-md sticky top-0 z-50 ">
+    <nav className="bg-green-500/50 backdrop-blur-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex-shrink-0 flex items-center">
@@ -21,16 +21,16 @@ const Navbar = () => {
                   src="/images/logo.png"
                   width={50}
                   height={50}
-                  alt={"sitelogo"}
+                  alt="Site Logo"
                 />
               </span>
             </Link>
           </div>
           <div className="hidden md:flex space-x-4 text-center align-middle my-auto">
-            <Link href="/about">
-              <span className="text-gray-900 hover:text-gray-700">Account</span>
+            <Link href="/login">
+              <span className="text-gray-900 hover:text-gray-700">Login</span>
             </Link>
-            <Link href="/services">
+            <Link href="/cart">
               <span className="text-gray-900 hover:text-gray-700">Cart</span>
             </Link>
           </div>
@@ -64,13 +64,13 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden text-center items-center">
           <div className="px-10 pt-auto pb-3 space-y-3 sm:px-3">
-            <Link href="/about">
+            <Link href="/login">
               <span className="block text-gray-900 hover:text-green-700 m-2">
-                Account
+                Login
               </span>
             </Link>
             <hr />
-            <Link href="/services">
+            <Link href="/cart">
               <span className="block text-gray-900 hover:text-green-700 m-2">
                 Cart
               </span>
