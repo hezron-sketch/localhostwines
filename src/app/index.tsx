@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ShopPage from "../src/app/shop/page";
+import ShopPage from "./shop1/page";
 
 const HomePage = () => {
   return (

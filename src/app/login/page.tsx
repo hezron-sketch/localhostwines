@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import Navbar from "../components/navbar/page";
-import Footer from "../components/footer/page";
+import Navbar from "../../components/navbar/page";
+import Footer from "../../components/footer/page";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");

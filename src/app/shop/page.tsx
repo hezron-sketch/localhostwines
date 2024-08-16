@@ -1,77 +1,81 @@
-// src/app/shop/page.tsx
-
 "use client";
 
-import Image from "next/image";
-import { useState } from "react";
-import Navbar from "../../components/navbar/page";
-import Footer from "../../components/footer/page";
-import products from "../../data/products";
-import { useCart } from "../../context/cartContext"; // Import the useCart hook
+import { useState, useEffect, useContext } from "react";
+import { CartContext } from "@/context/cartContext.jsx";
+import Cart from "../cart/page";
+import Navbar from "@/components/navbar/page";
+import Footer from "@/components/footer/page";
 
-const categories = ["All", "Wine", "Spirits"];
+export default function Products() {
+  const [showModal, setshowModal] = useState(false);
+  const [products, setProducts] = useState([]);
+  const { cartItems, addToCart } = useContext(CartContext);
 
-const ShopPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-  const { addToCart } = useCart(); // Now addToCart should work correctly
+  const toggle = () => {
+    setshowModal(!showModal);
+  };
 
-  const filteredProducts =
-    selectedCategory === "All"
-      ? products
-      : products.filter((product) => product.category === selectedCategory);
+  async function getProducts() {
+    const response = await fetch("https://dummyjson.com/products");
+    const data = await response.json();
+    setProducts(data.products);
+  }
+
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <>
       <Navbar />
-      <div className="bg-green-100/25 min-h-screen py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl font-bold mb-8 text-center">Our Products</h1>
-
-          {/* Categories Filter */}
-          <div className="mb-8 flex justify-center space-x-4">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`py-2 px-4 rounded ${
-                  selectedCategory === category
-                    ? "bg-green-500 text-white"
-                    : "bg-gray-200 text-gray-700"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <div key={product.id} className="border p-5 rounded-lg">
-                <Image
-                  src={product.image}
-                  alt={product.name}
-                  width={300}
-                  height={400}
-                  className="rounded-lg mx-auto"
-                />
-                <h2 className="text-xl font-semibold mt-4">{product.name}</h2>
-                <p className="text-gray-600 mt-2">{product.price}</p>
-                <p className="text-gray-500 mt-2">{product.description}</p>
+      <div className="flex flex-col justify-center bg-gray-100">
+        <div className="flex justify-between items-center px-20 py-5">
+          <h1 className="text-2xl uppercase font-bold mt-10 text-center mb-10">
+            Shop
+          </h1>
+          {!showModal && (
+            <button
+              className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+              onClick={toggle}
+            >
+              Cart ({cartItems.length})
+            </button>
+          )}
+        </div>
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-10">
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="bg-white shadow-md rounded-lg px-10 py-10"
+            >
+              <img
+                src={product.thumbnail}
+                alt={product.title}
+                className="rounded-md h-48"
+              />
+              <div className="mt-4">
+                <h1 className="text-lg uppercase font-bold">{product.title}</h1>
+                <p className="mt-2 text-gray-600 text-sm">
+                  {product.description.slice(0, 40)}...
+                </p>
+                <p className="mt-2 text-gray-600">${product.price}</p>
+              </div>
+              <div className="mt-6 flex justify-between items-center">
                 <button
-                  onClick={() => addToCart(product)}
-                  className="mt-4 bg-green-500 text-white py-2 px-4 rounded-3xl hover:bg-green-700"
+                  className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                  onClick={() => {
+                    addToCart(product);
+                  }}
                 >
-                  Add to Cart
+                  Add to cart
                 </button>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
+        <Cart showModal={showModal} toggle={toggle} />
       </div>
       <Footer />
     </>
   );
-};
-
-export default ShopPage;
+}
