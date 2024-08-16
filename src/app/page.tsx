@@ -1,14 +1,11 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
+import "./globals.css"; // Import global styles
+// import type { AppProps } from "next/app";
 import Navbar from "./components/navbar/page";
 import Footer from "./components/footer/page";
-import HomePage from "./pages";
+import ShopPage from "./shop/page";
+import HomePage from "../../pages";
 
-const inter = Inter({
-  subsets: ["latin"],
-});
-
-export default function Home() {
+function Index() {
   return (
     <>
       <Navbar />
@@ -17,3 +14,5 @@ export default function Home() {
     </>
   );
 }
+
+export default Index;

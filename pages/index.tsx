@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ShopPage from "../src/app/shop/page";
 
 const HomePage = () => {
   return (
@@ -22,7 +23,7 @@ const HomePage = () => {
             </p>
           </div>
           <a
-            href="#shop"
+            href="/shop"
             className="mt-6 inline-block bg-red-500 hover:bg-red-700 text-white font-semibold py-2 px-4 rounded"
           >
             Shop Now
@@ -45,9 +46,9 @@ const HomePage = () => {
             <h3 className="mt-4 text-xl">Product Name</h3>
             <p className="text-gray-600 mt-2">$29.99</p>
           </div>
-          {/* Repeat for more products */}
         </div>
       </section>
+      {/* <ShopPage /> */}
     </div>
   );
 };

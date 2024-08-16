@@ -3,7 +3,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="bg-green-800 text-white py-8">
+    <footer className="bg-green-500/50 text-black py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between">
           <div className="mb-6 md:mb-0">
@@ -14,27 +14,27 @@ const Footer = () => {
             <h3 className="text-lg font-semibold">Quick links</h3>
             <ul className="mt-2">
               <li>
-                <Link href="/" className="text-gray-400 hover:text-white">
+                <Link href="/" className="text-gray-500 hover:text-white">
                   Home
                 </Link>
               </li>
               <li>
                 <Link
                   href="/account"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-500 hover:text-white"
                 >
                   Account
                 </Link>
               </li>
               <li>
-                <Link href="/cart" className="text-gray-400 hover:text-white">
+                <Link href="/cart" className="text-gray-500 hover:text-white">
                   Cart
                 </Link>
               </li>
               <li>
                 <Link
                   href="/contact"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-500 hover:text-white"
                 >
                   Contact
                 </Link>
@@ -48,13 +48,13 @@ const Footer = () => {
                 Email:{" "}
                 <a
                   href="mailto:info@localhostwines.com"
-                  className="text-gray-400 hover:text-white"
+                  className="text-gray-500 hover:text-white"
                 >
                   info@localhostwines.com
                 </a>
               </li>
               <li>
-                Phone: <span className="text-gray-400">+254707069007</span>
+                Phone: <span className="text-gray-500">+254707069007</span>
               </li>
             </ul>
           </div>
@@ -64,28 +64,28 @@ const Footer = () => {
           <div className="flex space-x-4">
             <Link
               href="https://facebook.com"
-              className="text-gray-400 hover:text-white"
+              className="text-black hover:text-white"
               aria-label="Facebook"
             >
               <Facebook className="h-6 w-6" />
             </Link>
             <Link
               href="https://twitter.com"
-              className="text-gray-400 hover:text-white"
+              className="text-black hover:text-white"
               aria-label="Twitter"
             >
               <Twitter className="h-6 w-6" />
             </Link>
             <Link
               href="https://instagram.com"
-              className="text-gray-400 hover:text-white"
+              className="text-black hover:text-white"
               aria-label="Instagram"
             >
               <Instagram className="h-6 w-6" />
             </Link>
             <Link
               href="https://linkedin.com"
-              className="text-gray-400 hover:text-white"
+              className="text-black hover:text-white"
               aria-label="LinkedIn"
             >
               <Linkedin className="h-6 w-6" />
@@ -93,7 +93,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="mt-8 border-t border-gray-700 pt-4 text-center">
-          <p className="text-gray-400 text-sm">
+          <p className="text-gray-500 text-sm">
             &copy; 2024 Localhost Wines. All rights reserved.
           </p>
         </div>

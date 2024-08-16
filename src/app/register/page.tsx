@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Navbar from "../components/navbar/page";
+import Footer from "../components/footer/page";
 
 const RegisterPage = () => {
   const [email, setEmail] = useState("");
@@ -19,7 +20,7 @@ const RegisterPage = () => {
   return (
     <>
       <Navbar />
-      <div className="bg-green-50 min-h-screen flex items-center justify-center">
+      <div className="bg-green-100 min-h-screen flex items-center justify-center">
         <div className="max-w-md w-full p-6">
           <h1 className="text-2xl font-bold mb-6 text-center">Register</h1>
           {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
@@ -87,6 +88,7 @@ const RegisterPage = () => {
           </p>
         </div>
       </div>
+      <Footer />
     </>
   );
 };
