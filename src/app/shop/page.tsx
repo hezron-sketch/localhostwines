@@ -5,10 +5,13 @@ import { CartContext } from "@/context/cartContext.jsx";
 import Cart from "../cart/page";
 import Navbar from "@/components/navbar/page";
 import Footer from "@/components/footer/page";
+import SearchBar from "@/components/search/page";
+import { ShoppingCart } from "lucide-react";
 
 export default function Products() {
   const [showModal, setshowModal] = useState(false);
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
   const { cartItems, addToCart } = useContext(CartContext);
 
   const toggle = () => {
@@ -19,34 +22,56 @@ export default function Products() {
     const response = await fetch("https://dummyjson.com/products");
     const data = await response.json();
     setProducts(data.products);
+    setFilteredProducts(data.products);
   }
 
   useEffect(() => {
     getProducts();
   }, []);
 
+  // Function to handle search
+  const handleSearch = (query: string) => {
+    const filtered = products.filter((product) =>
+      product.title.toLowerCase().includes(query.toLowerCase())
+    );
+    setFilteredProducts(filtered); // Update the filtered products state
+  };
+
   return (
     <>
       <Navbar />
-      <div className="flex flex-col justify-center bg-gray-100">
+      <div className="flex min-h-screen flex-col justify-center bg-green-100/50 pb-10">
         <div className="flex justify-between items-center px-20 py-5">
-          <h1 className="text-2xl uppercase font-bold mt-10 text-center mb-10">
-            Shop
-          </h1>
+          <div>
+            <h1 className="text-green-600 text-2xl uppercase font-black mt-10 text-center mb-2">
+              localhost wines & spirits
+            </h1>
+            <h5 className="font-light">True Friendship</h5>
+          </div>
           {!showModal && (
             <button
-              className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+              className="px-4 py-2 text-green-600 font-black border-2 border-green-400 text-xs uppercase rounded-md hover:text-white hover:bg-green-700 focus:outline-none focus:bg-green-700/15 inline-flex items-center"
               onClick={toggle}
             >
-              Cart ({cartItems.length})
+              <ShoppingCart size={30} />
+              &nbsp; cart &nbsp;
+              <div className="bg-green-500 rounded-full w-6 h-6 align-middle p-1 text-green-100">
+                {cartItems.length}
+              </div>
             </button>
           )}
         </div>
+        <div>
+          <SearchBar onSearch={handleSearch} />
+        </div>
+        <h3 className="text-left pl-10 font-black text-2xl py-3 text-green-600">
+          Smoothies:{" "}
+        </h3>
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-10">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <div
               key={product.id}
-              className="bg-white shadow-md rounded-lg px-10 py-10"
+              className="bg-white/70 border-2 rounded-lg px-10 py-10"
             >
               <img
                 src={product.thumbnail}
@@ -75,6 +100,7 @@ export default function Products() {
         </div>
         <Cart showModal={showModal} toggle={toggle} />
       </div>
+
       <Footer />
     </>
   );

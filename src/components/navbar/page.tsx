@@ -30,9 +30,6 @@ const Navbar = () => {
             <Link href="/login">
               <span className="text-gray-900 hover:text-gray-700">Login</span>
             </Link>
-            <Link href="/cart">
-              <span className="text-gray-900 hover:text-gray-700">Cart</span>
-            </Link>
           </div>
           <div className="md:hidden flex items-center">
             <button
