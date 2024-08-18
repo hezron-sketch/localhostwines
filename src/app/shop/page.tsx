@@ -79,7 +79,7 @@ export default function Products() {
                 className="rounded-md h-48"
               />
               <div className="mt-4">
-                <h1 className="text-lg uppercase font-bold">{product.title}</h1>
+                <h3 className="text-md uppercase font-bold">{product.title}</h3>
                 <p className="mt-2 text-gray-600 text-sm">
                   {product.description.slice(0, 40)}...
                 </p>
@@ -87,7 +87,7 @@ export default function Products() {
               </div>
               <div className="mt-6 flex justify-between items-center">
                 <button
-                  className="px-4 py-2 bg-gray-800 text-white text-xs font-bold uppercase rounded hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                  className="px-4 py-2 bg-green-200 text-green-600 text-xs font-bold uppercase rounded hover:text-green-200 hover:bg-green-800 focus:outline-none focus:bg-gray-700"
                   onClick={() => {
                     addToCart(product);
                   }}

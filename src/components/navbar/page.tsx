@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { UserCircle2Icon } from "lucide-react";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,7 +29,9 @@ const Navbar = () => {
           </div>
           <div className="hidden md:flex space-x-4 text-center align-middle my-auto">
             <Link href="/login">
-              <span className="text-gray-900 hover:text-gray-700">Login</span>
+              <span className="text-gray-900 hover:text-gray-700">
+                <UserCircle2Icon size={30} />
+              </span>
             </Link>
           </div>
           <div className="md:hidden flex items-center">

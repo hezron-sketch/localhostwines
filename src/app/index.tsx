@@ -1,5 +1,4 @@
 import Image from "next/image";
-import ShopPage from "./shop1/page";
 
 const HomePage = () => {
   return (
@@ -32,7 +31,7 @@ const HomePage = () => {
       </section>
 
       {/* Product Highlights Section */}
-      <section id="shop" className="product-highlights py-12 text-center">
+      {/* <section id="shop" className="product-highlights py-12 text-center">
         <h2 className="text-3xl font-semibold">Featured Products</h2>
         <div className="products flex justify-around mt-8">
           <div className="product">
@@ -47,7 +46,7 @@ const HomePage = () => {
             <p className="text-gray-600 mt-2">$29.99</p>
           </div>
         </div>
-      </section>
+      </section> */}
       {/* <ShopPage /> */}
     </div>
   );

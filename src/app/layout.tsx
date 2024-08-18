@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Space_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { CartProvider } from "../context/cartContext";
 
 const inter = Inter({ subsets: ["latin"] });
+
+const mono = Space_Mono({
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={mono.className}>
         <CartProvider>{children}</CartProvider>
       </body>
     </html>
